@@ -1,0 +1,4 @@
+p, *, *, read
+p, client, data, read
+p, admin, data, read
+p, admin, data, write

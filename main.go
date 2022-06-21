@@ -21,10 +21,9 @@ func main() {
 
 	port := fmt.Sprintf(":%v", os.Getenv("PORT"))
 
-	db.Connect()
-	db.Migrate()
+	db, _ := db.Connect()
 
-	// STart server
+	// Start server
 	log.Printf("::: :: Listening on port %v", port)
-	log.Fatalln(http.ListenAndServe("localhost"+port, routes.Handler()))
+	log.Fatalln(http.ListenAndServe("localhost"+port, routes.Handler(db)))
 }

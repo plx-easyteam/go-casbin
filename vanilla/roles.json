@@ -1,0 +1,11 @@
+{
+	"admin": {
+		"create": ["users", "greetings"],
+		"read": ["users", "greetings"],
+		"update": ["users", "greetings"],
+		"delete": ["users", "greetings"]
+	},
+	"client": {
+		"read": ["greetings"]
+	}
+}

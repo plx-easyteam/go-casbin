@@ -24,3 +24,25 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(users)
 }
+
+func CreateUser(w http.ResponseWriter, r *http.Request) {
+	var user models.User
+	err := json.NewDecoder(r.Body).Decode(&user)
+
+	log.Println("::: CreatUser :::")
+
+	if err != nil {
+		log.Println("::: Error :::", err)
+
+		err := map[string]interface{}{
+			"status": 502,
+			"message": "Cannot get users",
+		}
+		json.NewEncoder(w).Encode(err)
+		return
+	} else {
+		db.Instance.Create(&user)
+	}
+
+	json.NewEncoder(w).Encode(user)
+}
